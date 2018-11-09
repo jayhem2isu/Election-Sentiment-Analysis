@@ -1,6 +1,6 @@
 #written in python 3
 import tweepy
-from tweepy import OA
+from tweepy import OAuthHandler
 
 
 #app credentials
@@ -13,3 +13,8 @@ auth = tweepy.OAuthHandler(consumer_key,consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 auth.secure = True
 api = tweepy.API(auth)
+
+for status in tweepy.Cursor(api.user_timeline).items(1):
+    # process status here
+    print(status)
+
